@@ -11,7 +11,6 @@ namespace SteamReportsAPI.Configurations
 
             services.AddDbContext<SteamReportsContext>(options =>
                 options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
-
         }
     }
 }

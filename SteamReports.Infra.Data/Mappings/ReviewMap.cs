@@ -87,7 +87,6 @@ namespace SteamReports.Infra.Data.Mappings
             builder.HasOne(r => r.SteamApp)
                 .WithMany(s => s.Reviews)
                 .HasForeignKey(r => r.SteamAppId);
-
         }
     }
 }

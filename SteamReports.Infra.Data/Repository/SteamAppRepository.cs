@@ -2,7 +2,6 @@
 using SteamReports.Domain.Interfaces;
 using SteamReports.Domain.Models;
 using SteamReports.Infra.Data.Context;
-using System.Collections.Generic;
 
 namespace SteamReports.Infra.Data.Repository
 {

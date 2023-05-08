@@ -20,7 +20,6 @@ namespace SteamReports.Infra.CrossCutting.IoC
             services.AddScoped<ISteamAppRepository, SteamAppRepository>();
             services.AddScoped<ISteamPlayerCountRepository,SteamPlayerCountRepository>();
             services.AddScoped<SteamReportsContext>();
-
         }
     }
 }

@@ -2,8 +2,8 @@
 {
     public enum TrendTimespanEnum
     {
-      Daily =0,
-      Weekly =1,
-      Yearly = 2,
+      Daily =1,
+      Weekly =7,
+      Yearly = 365,
     }
 }

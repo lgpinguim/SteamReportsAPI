@@ -2,7 +2,6 @@
 using SteamReports.Application.ViewModels;
 using SteamReports.Domain.Enums;
 using SteamReports.Domain.Interfaces;
-using System.Linq;
 
 namespace SteamReports.Application.Services
 {
@@ -19,16 +18,7 @@ namespace SteamReports.Application.Services
         {
             var steamDataList = _playerCountRepository.GetAll();
 
-            int groupingInterval = trendTimespan switch
-            {
-                TrendTimespanEnum.Daily => 1 // Group by day
-                ,
-                TrendTimespanEnum.Weekly => 7 // Group by week (7 days)
-                ,
-                TrendTimespanEnum.Yearly => 365 // Group by year (365 days)
-                ,
-                _ => throw new ArgumentOutOfRangeException(nameof(trendTimespan), trendTimespan, null)
-            };
+            int groupingInterval = (int)trendTimespan;
 
             var groupedData = steamDataList
                 .GroupBy(data => new { data.SteamAppId, Grouping = data.TimeStamp.Date.AddDays(-(data.TimeStamp.Date.DayOfYear % groupingInterval)) })
@@ -39,39 +29,54 @@ namespace SteamReports.Application.Services
 
             for (int i = 0; i < groupedData.Count(); i++)
             {
-
-                var group = groupedData.ElementAt(i);
-
+                var currentGroup = groupedData.ElementAt(i);
                 var trendViewModel = new PlayerCountTrendViewModel
                 {
-                    SteamAppId = group.Key.SteamAppId,
-                    Date = group.Key.Grouping,
-                    AveragePlayers = Math.Round(group.Average(d => d.PlayerCount))
+                    SteamAppId = currentGroup.Key.SteamAppId,
+                    Date = currentGroup.Key.Grouping,
+                    AveragePlayers = Math.Round(currentGroup.Average(d => d.PlayerCount))
                 };
 
-                if (i == 0)
+                if (HasPreviousElement(i))
+                {
+                    var previousElement = trendList.ElementAt(i - 1);
+
+                    var isValid = ValidateGrowth(i, previousElement, trendViewModel);
+
+                    if (!isValid)
+                        trendViewModel.GrowthPercentage = 0;
+
+                    else 
+                        trendViewModel.GrowthPercentage = CalculateGrowthPercentage(trendViewModel, previousElement);
+
+                }
+                else
                 {
                     trendViewModel.GrowthPercentage = 0;
-                    trendList.Add(trendViewModel);
-                    continue;
                 }
-
-                var previousElement = trendList.ElementAt(i - 1);
-
-                if (previousElement.SteamAppId != trendViewModel.SteamAppId || previousElement.AveragePlayers == 0)
-                {
-                    trendViewModel.GrowthPercentage = 0;
-                    trendList.Add(trendViewModel);
-                    continue;
-                }
-
-                trendViewModel.GrowthPercentage = Math.Round((
-                    ((trendViewModel.AveragePlayers - previousElement.AveragePlayers) /
-                     previousElement.AveragePlayers) * 100), 3);
 
                 trendList.Add(trendViewModel);
             }
             return trendList.ToList();
         }
+
+        private static double CalculateGrowthPercentage(PlayerCountTrendViewModel trendViewModel, PlayerCountTrendViewModel previousElement)
+        {
+            return Math.Round((
+                ((trendViewModel.AveragePlayers - previousElement.AveragePlayers) /
+                 previousElement.AveragePlayers) * 100), 3);
+        }
+
+        private static bool ValidateGrowth(int i, PlayerCountTrendViewModel previousElement, PlayerCountTrendViewModel currentElement)
+        {
+            return previousElement.SteamAppId == currentElement.SteamAppId &&
+                   previousElement.AveragePlayers != 0;
+        }
+
+        private static bool HasPreviousElement(int i)
+        {
+            return i != 0;
+        }
+
     }
 }

@@ -14,7 +14,6 @@ namespace SteamReportsAPI.Controllers
         private readonly IPlayerCountAppService _playerCountAppService;
         private readonly IDistributedCache _cache;
 
-
         public PlayersController(IPlayerCountAppService playerCountAppService, IDistributedCache cache)
         {
             _playerCountAppService = playerCountAppService;
@@ -31,17 +30,14 @@ namespace SteamReportsAPI.Controllers
             var cacheTrendList = _cache.GetString(cacheKey);
 
             if (cacheTrendList != null)
-            {
                 responseList = JsonSerializer.Deserialize<List<PlayerCountTrendViewModel>>(cacheTrendList)!;
-            }
-
+            
             else
             {
                 responseList = _playerCountAppService.GetPlayerCountTrendsByTimespan(timespan);
                 var jsonResponseList = JsonSerializer.Serialize(responseList);
-                _cache.SetString(cacheKey, jsonResponseList);
+                _cache.SetString(cacheKey, jsonResponseList, new DistributedCacheEntryOptions() { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10) });
             }
-
             return Ok(responseList);
         }
     }

@@ -23,8 +23,6 @@ namespace SteamReports.Infra.Data.Mappings
             builder.Property(i => i.ResolvedStatus)
                 .HasColumnType("bigint")
                 .HasColumnName("resolved_status");
-
-
         }
     }
 }

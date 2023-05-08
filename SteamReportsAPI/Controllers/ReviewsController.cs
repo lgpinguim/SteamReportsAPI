@@ -13,7 +13,6 @@ namespace SteamReportsAPI.Controllers
         private readonly IReviewAppService _reviewAppService;
         private readonly IDistributedCache _cache;
 
-
         public ReviewsController(IReviewAppService reviewAppService, IDistributedCache cache)
         {
             _reviewAppService = reviewAppService;
@@ -37,16 +36,15 @@ namespace SteamReportsAPI.Controllers
             var cacheSummaryList = _cache.GetString(cacheKey);
 
             if (cacheSummaryList != null)
-            {
                 responseList = JsonSerializer.Deserialize<List<GameReviewViewModel>>(cacheSummaryList)!;
-            }
 
             else
             {
                 responseList = _reviewAppService.GetSummary();
                 var jsonResponseList = JsonSerializer.Serialize(responseList);
-                _cache.SetString(cacheKey, jsonResponseList);
+                _cache.SetString(cacheKey, jsonResponseList, new DistributedCacheEntryOptions() { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)});
             }
+
             return Ok(responseList);
         }
     }

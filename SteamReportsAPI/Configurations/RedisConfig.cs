@@ -18,7 +18,6 @@ namespace SteamReportsAPI.Configurations
             var config = new ConfigurationOptions
             {
                 EndPoints = { { host!, Convert.ToInt32(port) } },
-                //Password = string.IsNullOrEmpty(password) ? "" : password,
                 ConnectRetry = 3,
                 AbortOnConnectFail = false
             };
