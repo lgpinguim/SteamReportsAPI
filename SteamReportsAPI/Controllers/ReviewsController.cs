@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using SteamReports.Application.Interfaces;
 using SteamReports.Application.ViewModels;
 using SteamReports.Domain.Enums;
@@ -10,11 +11,13 @@ namespace SteamReports.API.Controllers
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewAppService _reviewAppService;
+        private readonly IMemoryCache _cache;
 
 
-        public ReviewsController(IReviewAppService reviewAppService)
+        public ReviewsController(IReviewAppService reviewAppService, IMemoryCache cache)
         {
             _reviewAppService = reviewAppService;
+            _cache = cache;
         }
 
         [HttpGet]
@@ -27,7 +30,10 @@ namespace SteamReports.API.Controllers
         [HttpGet("summary")]
         public IActionResult GetReviewsSummary()
         {
-            return Ok(_reviewAppService.GetSummary());
+            if (_cache.TryGetValue("summary", out var response)) return Ok(response);
+            response = _reviewAppService.GetSummary();
+            _cache.Set("summary", response, TimeSpan.FromMinutes(5));
+            return Ok(response);
         }
 
 
