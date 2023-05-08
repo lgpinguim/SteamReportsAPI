@@ -1,6 +1,6 @@
 ﻿using SteamReports.Infra.CrossCutting.IoC;
 
-namespace SteamReports.API.Configurations
+namespace SteamReportsAPI.Configurations
 {
     public static class DependencyInjectionConfig
     {

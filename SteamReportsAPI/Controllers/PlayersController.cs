@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.Distributed;
 using SteamReports.Application.Interfaces;
+using SteamReports.Application.ViewModels;
 using SteamReports.Domain.Enums;
+using System.Text.Json;
 
 namespace SteamReportsAPI.Controllers
 {
@@ -10,10 +12,10 @@ namespace SteamReportsAPI.Controllers
     public class PlayersController : ControllerBase
     {
         private readonly IPlayerCountAppService _playerCountAppService;
-        private readonly IMemoryCache _cache; 
+        private readonly IDistributedCache _cache;
 
 
-        public PlayersController(IPlayerCountAppService playerCountAppService, IMemoryCache cache)
+        public PlayersController(IPlayerCountAppService playerCountAppService, IDistributedCache cache)
         {
             _playerCountAppService = playerCountAppService;
             _cache = cache;
@@ -22,12 +24,25 @@ namespace SteamReportsAPI.Controllers
         [HttpGet("trends")]
         public IActionResult GetTrends(TrendTimespanEnum timespan)
         {
-            // Retrieve the cached result or perform the expensive operation if not cached
-            if (_cache.TryGetValue("trends", out var response)) return Ok(response);
-            response = _playerCountAppService.GetPlayerCountTrendsByTimespan(timespan);
-            _cache.Set("trends", response, TimeSpan.FromMinutes(15));
+            string cacheKey = $"trends{timespan}";
 
-            return Ok(response);
+            List<PlayerCountTrendViewModel> responseList;
+
+            var cacheTrendList = _cache.GetString(cacheKey);
+
+            if (cacheTrendList != null)
+            {
+                responseList = JsonSerializer.Deserialize<List<PlayerCountTrendViewModel>>(cacheTrendList)!;
+            }
+
+            else
+            {
+                responseList = _playerCountAppService.GetPlayerCountTrendsByTimespan(timespan);
+                var jsonResponseList = JsonSerializer.Serialize(responseList);
+                _cache.SetString(cacheKey, jsonResponseList);
+            }
+
+            return Ok(responseList);
         }
     }
 }

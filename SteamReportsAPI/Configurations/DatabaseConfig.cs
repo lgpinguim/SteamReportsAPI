@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SteamReports.Infra.Data.Context;
 
-namespace SteamReports.API.Configurations
+namespace SteamReportsAPI.Configurations
 {
     public static class DatabaseConfig
     {

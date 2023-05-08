@@ -1,4 +1,3 @@
-using SteamReports.API.Configurations;
 using SteamReportsAPI.Configurations;
 
 namespace SteamReportsAPI
@@ -20,8 +19,15 @@ namespace SteamReportsAPI
             // Setting DBContexts
             builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
-            //Setting redis
-            builder.Services.AddRedisConfiguration();
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Services.AddDistributedMemoryCache();
+            }
+            else
+            {
+                //Setting redis
+                builder.Services.AddRedisConfiguration();
+            }
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerConfiguration();
@@ -43,6 +49,8 @@ namespace SteamReportsAPI
             app.UseAuthorization();
 
             app.MapControllers();
+
+            app.UseSwaggerSetup();
 
             app.Run();
         }

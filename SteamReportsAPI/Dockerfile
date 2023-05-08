@@ -19,8 +19,8 @@ RUN dotnet publish "SteamReportsAPI.csproj" -c Release -o /app/publish /p:UseApp
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV REDISHOST "redis"
-ENV REDISPORT "6379"
+ENV REDIS_HOST "redis"
+ENV REDIS_PORT "6379"
 ENTRYPOINT ["dotnet", "SteamReportsAPI.dll"]
 
 

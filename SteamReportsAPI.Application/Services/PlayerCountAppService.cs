@@ -71,11 +71,7 @@ namespace SteamReports.Application.Services
 
                 trendList.Add(trendViewModel);
             }
-
-
             return trendList.ToList();
-
         }
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace SteamReports.API.Configurations
+namespace SteamReportsAPI.Configurations
 {
     public static class SwaggerConfig
     {

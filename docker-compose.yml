@@ -9,10 +9,10 @@ services:
     ports:
       - "8080:80"
     environment:
-       - ASPNETCORE_ENVIRONMENT=Development
         - REDIS_HOST:"redis"
-        - REDIS_PORT:6379       
-          
+        - REDIS_PORT:6379   
+    networks:
+      - steamreportsnet       
     depends_on:
       - redis
 
@@ -21,4 +21,10 @@ services:
     restart: always
     ports:
       - "6379:6379"
+    networks:
+      - steamreportsnet
+
+networks:
+  steamreportsnet:
+    driver: bridge
 
