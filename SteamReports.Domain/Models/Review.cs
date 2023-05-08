@@ -21,6 +21,6 @@
         public string? LangKey { get; set; }
         public bool ReceivedCompensation { get; set; }
 
-        public SteamApp SteamApp { get; set; } 
+        public SteamApp? SteamApp { get; set; } 
     }
 }

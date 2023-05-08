@@ -5,7 +5,7 @@
         public long SteamAppId { get; set; }
         public string? DisplayName { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     }
 }

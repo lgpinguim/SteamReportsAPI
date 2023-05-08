@@ -24,9 +24,8 @@ namespace SteamReports.Application.Services
 
             var data = searchParameters.HasDateFilter()
                 ? _reviewRepository.GetByDateRange(paginationFilter, searchParameters.StartDate!.Value,
-                    searchParameters.EndDate.Value, out var totalRecords)
+                    searchParameters.EndDate!.Value, out var totalRecords)
                 : _reviewRepository.GetAll(paginationFilter, out totalRecords);
-
 
             var (quotient, remainder) = Math.DivRem(totalRecords, paginationFilter.PageSize);
 
@@ -41,14 +40,13 @@ namespace SteamReports.Application.Services
         {
             var gamesList = _steamAppRepository.GetAll();
 
-
             return gamesList.Select(gr => new GameReviewViewModel()
             {
                 SteamAppId = gr.SteamAppId,
                 GameName = gamesList.FirstOrDefault(g => g.SteamAppId == gr.SteamAppId)!.DisplayName,
                 PositiveReviews = gr.Reviews.Count(r => r.Recommended),
                 NegativeReviews = gr.Reviews.Count(r => !r.Recommended),
-                TotalReviews = gr.Reviews.Count(),
+                TotalReviews = gr.Reviews.Count,
             }).ToList();
 
         }

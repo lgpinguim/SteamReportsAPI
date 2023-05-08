@@ -31,7 +31,7 @@ namespace SteamReports.Infra.Data.Repository
 
         }
 
-        private IQueryable<Review> AddPagination(PaginationFilter paginationFilter, IQueryable<Review> records)
+        private static IQueryable<Review> AddPagination(PaginationFilter paginationFilter, IQueryable<Review> records)
         {
             return records.OrderByDescending(r => r.DatePosted)
                 .Skip((paginationFilter.PageNumber - 1) * paginationFilter.PageSize)
