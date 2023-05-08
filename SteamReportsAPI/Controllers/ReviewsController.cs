@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SteamReports.Application.Interfaces;
 using SteamReports.Application.ViewModels;
+using SteamReports.Domain.Enums;
 
 namespace SteamReports.API.Controllers
 {
@@ -9,6 +10,7 @@ namespace SteamReports.API.Controllers
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewAppService _reviewAppService;
+
 
         public ReviewsController(IReviewAppService reviewAppService)
         {
@@ -22,11 +24,12 @@ namespace SteamReports.API.Controllers
            return response.Data.Count > 0 ? Ok(response) : NotFound(response);
         }
 
-        [HttpGet]
-        [Route("/summary")]
+        [HttpGet("summary")]
         public IActionResult GetReviewsSummary()
         {
             return Ok(_reviewAppService.GetSummary());
         }
+
+
     }
 }

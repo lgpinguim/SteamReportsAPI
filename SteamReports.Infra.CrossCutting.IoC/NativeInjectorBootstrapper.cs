@@ -13,10 +13,12 @@ namespace SteamReports.Infra.CrossCutting.IoC
         {
             // Application
             services.AddScoped<IReviewAppService, ReviewAppService>();
+            services.AddScoped<IPlayerCountAppService, PlayerCountAppService>();
 
             // Infra - Data
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<ISteamAppRepository, SteamAppRepository>();
+            services.AddScoped<ISteamPlayerCountRepository,SteamPlayerCountRepository>();
             services.AddScoped<SteamReportsContext>();
 
         }

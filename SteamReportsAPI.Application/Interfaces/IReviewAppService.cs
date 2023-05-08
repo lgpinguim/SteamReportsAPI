@@ -1,5 +1,6 @@
 ﻿using SteamReports.Application.ViewModels;
 using SteamReports.Domain.Core.Helpers.Pagination;
+using SteamReports.Domain.Enums;
 using SteamReports.Domain.Models;
 
 namespace SteamReports.Application.Interfaces

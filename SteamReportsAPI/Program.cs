@@ -22,6 +22,8 @@ namespace SteamReportsAPI
             // Setting DBContexts
             builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
+            builder.Services.AddMemoryCache();
+
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerConfiguration();

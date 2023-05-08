@@ -17,6 +17,7 @@ namespace SteamReports.API.Configurations
                     Description = "A minimal API developed for Funcom",
                     Contact = new OpenApiContact { Name = "Luis Gustavo Fernandes Ferreira", Email = "luisgustavofernandesferreira@outlook.com", Url = new Uri("https://github.com/lgpinguim") },
                 });
+
             });
         }
 
