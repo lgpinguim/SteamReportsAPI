@@ -1,4 +1,5 @@
 using SteamReports.API.Configurations;
+using SteamReportsAPI.Configurations;
 
 namespace SteamReportsAPI
 {
@@ -14,16 +15,13 @@ namespace SteamReportsAPI
                 .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
                 .AddEnvironmentVariables();
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
             // Setting DBContexts
             builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
-            builder.Services.AddMemoryCache();
-
+            //Setting redis
+            builder.Services.AddRedisConfiguration();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerConfiguration();

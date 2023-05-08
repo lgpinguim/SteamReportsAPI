@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReportsAPI", "SteamReportsAPI\SteamReportsAPI.csproj", "{B3560889-E05A-4C53-B0AA-3F5581C7F936}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamReportsAPI", "SteamReportsAPI\SteamReportsAPI.csproj", "{B3560889-E05A-4C53-B0AA-3F5581C7F936}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{7DE2E1C2-4E95-40EE-9FBD-4F74890441CE}"
 EndProject
@@ -13,19 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{7CDA465C-8044-470D-B50C-FFCD9A2B7820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Application", "SteamReportsAPI.Application\SteamReports.Application.csproj", "{05FB3B0A-8D1E-4364-991F-171693715BED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamReports.Application", "SteamReportsAPI.Application\SteamReports.Application.csproj", "{05FB3B0A-8D1E-4364-991F-171693715BED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Domain", "SteamReports.Domain\SteamReports.Domain.csproj", "{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamReports.Domain", "SteamReports.Domain\SteamReports.Domain.csproj", "{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{FECDEFC1-FB00-4C63-BBAF-54B0136FDAFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Infra.Data", "SteamReports.Infra.Data\SteamReports.Infra.Data.csproj", "{9824E0D1-6351-4C37-8A70-81B60FA66698}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamReports.Infra.Data", "SteamReports.Infra.Data\SteamReports.Infra.Data.csproj", "{9824E0D1-6351-4C37-8A70-81B60FA66698}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{01D73A03-05B4-4078-8E37-DD47E081D852}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Infra.CrossCutting.IoC", "SteamReports.Infra.CrossCutting.IoC\SteamReports.Infra.CrossCutting.IoC.csproj", "{DF9E3C81-6308-4C28-A11F-39262954BB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamReports.Infra.CrossCutting.IoC", "SteamReports.Infra.CrossCutting.IoC\SteamReports.Infra.CrossCutting.IoC.csproj", "{DF9E3C81-6308-4C28-A11F-39262954BB2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Domain.Core", "SteamReports.Domain.Core\SteamReports.Domain.Core.csproj", "{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamReports.Domain.Core", "SteamReports.Domain.Core\SteamReports.Domain.Core.csproj", "{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{131A7655-7533-4C8B-BD7E-E61B17858C7D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{760431AC-AA29-4117-ACC5-908528CAACC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760431AC-AA29-4117-ACC5-908528CAACC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760431AC-AA29-4117-ACC5-908528CAACC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760431AC-AA29-4117-ACC5-908528CAACC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760431AC-AA29-4117-ACC5-908528CAACC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
