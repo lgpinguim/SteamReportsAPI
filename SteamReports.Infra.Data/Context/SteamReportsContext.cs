@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SteamReports.Domain.Models;
+using SteamReports.Infra.Data.Mappings;
+
+namespace SteamReports.Infra.Data.Context
+{
+    public sealed class SteamReportsContext : DbContext
+    {
+
+
+        public SteamReportsContext(DbContextOptions<SteamReportsContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<SteamApp> Games { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<SteamPlayerCount> SteamPlayerCounts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new SteamAppMap());
+            modelBuilder.ApplyConfiguration(new ReviewMap());
+            modelBuilder.ApplyConfiguration(new SteamPlayerCountMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+}

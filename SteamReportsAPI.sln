@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReportsAPI", "SteamReportsAPI\SteamReportsAPI.csproj", "{B3560889-E05A-4C53-B0AA-3F5581C7F936}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{7DE2E1C2-4E95-40EE-9FBD-4F74890441CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{B943F438-FBB7-466A-AC5C-20E65928AE72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{BB36BE73-87FF-44AC-82D2-47C5F502655C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{7CDA465C-8044-470D-B50C-FFCD9A2B7820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Application", "SteamReportsAPI.Application\SteamReports.Application.csproj", "{05FB3B0A-8D1E-4364-991F-171693715BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Domain", "SteamReports.Domain\SteamReports.Domain.csproj", "{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{FECDEFC1-FB00-4C63-BBAF-54B0136FDAFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Infra.Data", "SteamReports.Infra.Data\SteamReports.Infra.Data.csproj", "{9824E0D1-6351-4C37-8A70-81B60FA66698}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{01D73A03-05B4-4078-8E37-DD47E081D852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Infra.CrossCutting.IoC", "SteamReports.Infra.CrossCutting.IoC\SteamReports.Infra.CrossCutting.IoC.csproj", "{DF9E3C81-6308-4C28-A11F-39262954BB2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamReports.Domain.Core", "SteamReports.Domain.Core\SteamReports.Domain.Core.csproj", "{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3560889-E05A-4C53-B0AA-3F5581C7F936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3560889-E05A-4C53-B0AA-3F5581C7F936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3560889-E05A-4C53-B0AA-3F5581C7F936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3560889-E05A-4C53-B0AA-3F5581C7F936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05FB3B0A-8D1E-4364-991F-171693715BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05FB3B0A-8D1E-4364-991F-171693715BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05FB3B0A-8D1E-4364-991F-171693715BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05FB3B0A-8D1E-4364-991F-171693715BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9824E0D1-6351-4C37-8A70-81B60FA66698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9824E0D1-6351-4C37-8A70-81B60FA66698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9824E0D1-6351-4C37-8A70-81B60FA66698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9824E0D1-6351-4C37-8A70-81B60FA66698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9E3C81-6308-4C28-A11F-39262954BB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9E3C81-6308-4C28-A11F-39262954BB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9E3C81-6308-4C28-A11F-39262954BB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9E3C81-6308-4C28-A11F-39262954BB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3560889-E05A-4C53-B0AA-3F5581C7F936} = {7DE2E1C2-4E95-40EE-9FBD-4F74890441CE}
+		{05FB3B0A-8D1E-4364-991F-171693715BED} = {B943F438-FBB7-466A-AC5C-20E65928AE72}
+		{187CFE1C-3C6A-4F5E-80C5-3C18C0EB0123} = {BB36BE73-87FF-44AC-82D2-47C5F502655C}
+		{FECDEFC1-FB00-4C63-BBAF-54B0136FDAFB} = {7CDA465C-8044-470D-B50C-FFCD9A2B7820}
+		{9824E0D1-6351-4C37-8A70-81B60FA66698} = {FECDEFC1-FB00-4C63-BBAF-54B0136FDAFB}
+		{01D73A03-05B4-4078-8E37-DD47E081D852} = {7CDA465C-8044-470D-B50C-FFCD9A2B7820}
+		{DF9E3C81-6308-4C28-A11F-39262954BB2D} = {01D73A03-05B4-4078-8E37-DD47E081D852}
+		{511EF1F9-03D5-4B05-9DA5-201A051ED7BA} = {BB36BE73-87FF-44AC-82D2-47C5F502655C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CFDABC6-1B40-45AC-AC20-D11FBBD2F5E0}
+	EndGlobalSection
+EndGlobal
