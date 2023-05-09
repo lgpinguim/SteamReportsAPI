@@ -3,9 +3,8 @@ using Microsoft.Extensions.Caching.Distributed;
 using SteamReports.Application.Interfaces;
 using SteamReports.Application.ViewModels;
 using SteamReports.Domain.Enums;
-using System.Text.Json;
 using Swashbuckle.AspNetCore.Annotations;
-using static System.Net.Mime.MediaTypeNames;
+using System.Text.Json;
 
 namespace SteamReportsAPI.Controllers
 {

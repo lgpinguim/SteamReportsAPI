@@ -34,23 +34,19 @@ namespace SteamReports.Application.Services
                 {
                     SteamAppId = currentGroup.Key.SteamAppId,
                     Date = currentGroup.Key.Grouping,
-                    AveragePlayers = Math.Round(currentGroup.Average(d => d.PlayerCount))
+                    AveragePlayers = Math.Round(currentGroup.Average(d => d.PlayerCount)),
+                    GrowthPercentage = 0
                 };
 
                 if (HasPreviousElement(i))
                 {
                     var previousElement = trendList.ElementAt(i - 1);
 
-                    var isValid = ValidateGrowth(i, previousElement, trendViewModel);
+                    var isValid = ValidateGrowth(previousElement, trendViewModel);
 
-                    if (!isValid)
-                        trendViewModel.GrowthPercentage = 0;
-
-                    else 
+                    if (isValid)
                         trendViewModel.GrowthPercentage = CalculateGrowthPercentage(trendViewModel, previousElement);
                 }
-                else
-                    trendViewModel.GrowthPercentage = 0;
 
                 trendList.Add(trendViewModel);
             }
@@ -64,7 +60,7 @@ namespace SteamReports.Application.Services
                  previousElement.AveragePlayers) * 100), 3);
         }
 
-        private static bool ValidateGrowth(int i, PlayerCountTrendViewModel previousElement, PlayerCountTrendViewModel currentElement)
+        private static bool ValidateGrowth(PlayerCountTrendViewModel previousElement, PlayerCountTrendViewModel currentElement)
         {
             return previousElement.SteamAppId == currentElement.SteamAppId &&
                    previousElement.AveragePlayers != 0;

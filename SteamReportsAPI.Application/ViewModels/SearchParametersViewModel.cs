@@ -21,7 +21,5 @@
         {
             return EndDate.HasValue || StartDate.HasValue;
         }
-
-
     }
 }

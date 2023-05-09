@@ -15,6 +15,8 @@ services:
       - steamreportsnet       
     depends_on:
       - redis
+    volumes: 
+       - ./SteamReportsAPI/steam.db:/app/steam.db
 
   redis:
     image: redis
