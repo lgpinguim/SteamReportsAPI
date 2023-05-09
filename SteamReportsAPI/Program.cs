@@ -26,7 +26,6 @@ namespace SteamReportsAPI
                 //Setting redis
                 builder.Services.AddRedisConfiguration();
 
-
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerConfiguration();
 
@@ -47,6 +46,8 @@ namespace SteamReportsAPI
             app.UseAuthorization();
 
             app.MapControllers();
+
+            app.UseCors();
 
             app.UseSwaggerSetup();
 
