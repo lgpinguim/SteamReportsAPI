@@ -7,10 +7,21 @@
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
+        public bool IsDateFilterValid()
+        {
+            if ((!StartDate.HasValue && EndDate.HasValue) || (StartDate.HasValue && !EndDate.HasValue))
+            {
+                return false;
+            }
+
+            return !(EndDate < StartDate);
+        }
+
         public bool HasDateFilter()
         {
-            return EndDate >= StartDate;
+            return EndDate.HasValue || StartDate.HasValue;
         }
+
 
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace SteamReports.Domain.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SteamReports.Domain.Enums
 {
     public enum TrendTimespanEnum
     {

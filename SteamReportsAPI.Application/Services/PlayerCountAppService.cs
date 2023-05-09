@@ -48,12 +48,9 @@ namespace SteamReports.Application.Services
 
                     else 
                         trendViewModel.GrowthPercentage = CalculateGrowthPercentage(trendViewModel, previousElement);
-
                 }
                 else
-                {
                     trendViewModel.GrowthPercentage = 0;
-                }
 
                 trendList.Add(trendViewModel);
             }

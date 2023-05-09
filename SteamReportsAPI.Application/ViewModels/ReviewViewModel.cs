@@ -1,8 +1,12 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SteamReports.Domain.Models
+namespace SteamReports.Application.ViewModels
 {
-    public record Review
+    public class ReviewViewModel
     {
         public long? Id { get; set; }
         public bool Recommended { get; set; }
@@ -12,9 +16,9 @@ namespace SteamReports.Domain.Models
         public string? ReviewUrl { get; set; }
         public DateTime DatePosted { get; set; }
         public DateTime? DateUpdated { get; set; }
-        public int? HelpfulAmount { get; set; }
-        public int? HelpfulTotal { get; set; }
-        public int? OwnedGamesAmount { get; set; }
+        public int HelpfulAmount { get; set; }
+        public int HelpfulTotal { get; set; }
+        public int OwnedGamesAmount { get; set; }
         public long? RespondedBy { get; set; }
         public DateTime? RespondedTimeStamp { get; set; }
         public long? IssueList { get; set; }
@@ -22,8 +26,5 @@ namespace SteamReports.Domain.Models
         public long SteamAppId { get; set; }
         public string? LangKey { get; set; }
         public bool ReceivedCompensation { get; set; }
-
-        [JsonIgnore]
-        public SteamApp? SteamApp { get; set; } 
     }
 }

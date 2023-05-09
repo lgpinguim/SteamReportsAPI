@@ -19,7 +19,6 @@ namespace SteamReports.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new ReviewMap());
             modelBuilder.ApplyConfiguration(new SteamPlayerCountMap());
             modelBuilder.ApplyConfiguration(new IssueMap());
-
             base.OnModelCreating(modelBuilder);
         }
     }

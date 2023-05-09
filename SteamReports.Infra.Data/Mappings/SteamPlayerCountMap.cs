@@ -22,7 +22,6 @@ namespace SteamReports.Infra.Data.Mappings
             builder.Property(e => e.TimeStamp)
                 .HasColumnType("timestamp")
                 .HasColumnName("time_stamp");
-
         }
     }
 }

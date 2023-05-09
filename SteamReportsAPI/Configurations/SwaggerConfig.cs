@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace SteamReportsAPI.Configurations
 {
@@ -17,6 +18,10 @@ namespace SteamReportsAPI.Configurations
                     Description = "A minimal API developed for Funcom",
                     Contact = new OpenApiContact { Name = "Luis Gustavo Fernandes Ferreira", Email = "luisgustavofernandesferreira@outlook.com", Url = new Uri("https://github.com/lgpinguim") },
                 });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                s.IncludeXmlComments(xmlPath);
 
             });
         }
