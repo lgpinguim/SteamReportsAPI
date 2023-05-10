@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   steamreportsapi:
-    image: ${DOCKER_REGISTRY-}steamreportsapi
+    image: steamreportsapi
     build:
       context: .
       dockerfile: SteamReportsAPI/Dockerfile

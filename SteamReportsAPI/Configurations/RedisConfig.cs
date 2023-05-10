@@ -12,7 +12,6 @@ namespace SteamReportsAPI.Configurations
 
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            //var password = builder.Configuration["Redis:Password"];
             var host = redisHost;
             var port = redisPort;
             var config = new ConfigurationOptions
