@@ -24,6 +24,6 @@ namespace SteamReports.Domain.Models
         public bool ReceivedCompensation { get; set; }
 
         [JsonIgnore]
-        public SteamApp? SteamApp { get; set; } 
+        public SteamApp? SteamApp { get; set; }
     }
 }
